@@ -3,7 +3,9 @@ import './App.css';
 import Textform from "../src/componentes/Textform"
 import Navbar from "../src/componentes/Navbar";
 import Alert from "./componentes/Alert";
+import About from "../src/componentes/About";
 import React, {useState} from 'react'
+// import { Route } from 'react-router-dom';
 function App() {
   const [mode, setMode] = useState('light')
   const [alert, setAlert] = useState('null')
@@ -55,10 +57,27 @@ setAlert(null);
   return (
    <>
    <div>
-   <Navbar title="MY-APP" mode={mode} toggleMode={toggleMode} redToggleMode={redToggleMode} greenToggleMode={greenToggleMode}></Navbar>
-   <Textform title="MY-APP" showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}></Textform>
-   <Alert title="MY-APP" alert={alert} ></Alert>
+   <Navbar title="MY-APP" mode={mode} toggleMode={toggleMode} redToggleMode={redToggleMode} greenToggleMode={greenToggleMode} />
+   <Textform title="MY-APP" showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
+   <Alert title="MY-APP" alert={alert} />
+   {/* <About /> */}
    </div>
+
+   <Router>
+
+    <BrowserRouter>
+            
+      <Routes>
+    
+                  <Route path="/About" element={<About />} />
+                  <Route path="/" >
+          <Textform  showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
+          </Route>
+                  
+        
+      </Routes>
+    </BrowserRouter>
+    </Router>
 
 
 
